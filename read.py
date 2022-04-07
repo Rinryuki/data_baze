@@ -4,45 +4,41 @@ import pickle
 class Stud:
     fam = None
     name = None
-    surn = None
-    bal = None
+    nom = None
+    dr = None
 
 
-f = open('students.dat', 'rb')
+f = open('Friends.dat', 'rb')
 mas = pickle.load(f)
 while True:
     print()
     print('Введите необходимое число для операции с БД')
-    print('1 - для сортировки БД по убыванию среднего балла')
-    print('2 - для поиска в БД студентов, имеющих двойки')
-    print('3 - для редактирования записи в БД')
-    print('4 - печать БД')
-    print('5 - выход из БД')
+    print('1 - для добавление нового друга в БД')
+    print('2 - сортировать всез друзей по дате рождения')
+    print('3 - для печати')
+    print('4 - для выхода')
     print()
     n = int(input())
     if n == 1:
-        mas.sort(key=lambda y: sum(y.bal) / len(y.bal), reverse=True)
-        for x in mas:
-            print(x.fam, x.name, x.surn, *x.bal)
-    elif n == 2:
-        for x in mas:
-            if 2 in x.bal:
-                print(x.fam, x.name, x.surn, *x.bal)
+        print('Введите фамилию, имя, номер телефона и дату рождению')
+        s = input()
+        x = s.split()
+        st = Stud()
+        st.fam = x[0]
+        st.name = x[1]
+        st.nom = x[2]
+        st.dr = list(map(int, x[3].split('.')))
+        mas.append(st)
+    if n == 2:
+        mas.sort(key=lambda y: int(y.dr[0]))
+        mas.sort(key=lambda y: int(y.dr[1]))
+        mas.sort(key=lambda y: int(y.dr[2]))
+
     elif n == 3:
-        fml = input('Введите фамилию студента: ')
-        print('Введите полную новую запись: фамилию, имя, отчество, 5 оценок через пробел')
-        new = input()
         for x in mas:
-            if x.fam == fml:
-                new = new.split(' ', 3)
-                x.fam = new[0]
-                x.name = new[1]
-                x.surn = new[2]
-                x.bal = list(map(int, new[3].split()))
+            print(x.fam, ' ', x.name, ' ', x.nom, ' ', x.dr[0], '.', x.dr[1], '.', x.dr[2], sep='')
+
     elif n == 4:
-        for x in mas:
-            print(x.fam, x.name, x.surn, *x.bal)
-    elif n == 5:
         v = input('Выйти Y/N:').upper()
         if v == 'Y':
             break

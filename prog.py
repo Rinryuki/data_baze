@@ -4,7 +4,7 @@ class Stud:
     name = None
     nom = None
     dr = None
-f=open('students.txt','r',encoding='utf-8')
+f=open('Friends.txt','r',encoding='utf-8')
 ST=[]
 while True:
     x=f.readline()
@@ -17,7 +17,7 @@ while True:
     st.nom = x[2]
     st.dr=list(map(int,x[3].split('.')))
     ST.append(st)
-fout=open('students.dat','wb')
+fout=open('Friends.dat','wb')
 pickle.dump(ST,fout)
 fout.close()
 f.close()
