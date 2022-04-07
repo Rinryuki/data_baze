@@ -5,6 +5,7 @@ class Stud:
     surn = None
     bal= None
 f=open('students.txt','r',encoding='utf-8')
+#proverka
 ST=[]
 while True:
     x=f.readline()
