@@ -7,9 +7,8 @@ class Stud:
     nom = None
     dr = None
 
-
 f = open('Friends.dat', 'rb')
-mas = pickle.load(f)
+mas = mas1 = pickle.load(f)
 while True:
     print()
     print('Введите необходимое число для операции с БД:')
@@ -29,9 +28,9 @@ while True:
         st.fam = x[0]
         st.name = x[1]
         st.nom = x[2]
-        st.dr = list(map(int, x[3].split('.')))
+        st.dr = list(map(str, x[3].split('.')))
         mas.append(st)
-    if n == 2:
+    elif n == 2:
         mas.sort(key=lambda y: int(y.dr[0]))
         mas.sort(key=lambda y: int(y.dr[1]))
         mas.sort(key=lambda y: int(y.dr[2]))
@@ -73,7 +72,7 @@ while True:
             break
     else:
         print('Нет такой операции в БД')
-fout = open('students.dat', 'wb')
+fout = open('Friends.dat', 'wb')
 pickle.dump(mas, fout)
-f.close()
 fout.close()
+f.close()
