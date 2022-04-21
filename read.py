@@ -13,11 +13,12 @@ while True:
     print()
     print('Введите необходимое число для операции с БД:')
     print('1 - Для добавление нового друга в БД')
-    print('2 - Сортировать всез друзей по дате рождения')
+    print('2 - Сортировать всех друзей по дате рождения')
     print('3 - Печать БД')
     print('4 - Редактирование имеющихся друзей')
-    print('5 - Всё о друге (За просмотр информации - 500 обезьяньих долларов в BTD6)')
-    print('6 - Выход')
+    print('5 - Узнать всю информацию о друге')
+    print('6 - Запись информации в файл формата dat ')
+    print('7 - Выход')
     print()
     n = int(input())
     if n == 1:
@@ -67,6 +68,11 @@ while True:
             for x in q:
                 print(x.fam, ' ', x.name, ' ', x.nom, ' ', x.dr[0], '.', x.dr[1], '.', x.dr[2], sep='')
     elif n == 6:
+        nazv= input('Введите название файла: ')
+        newfout = open(nazv+'.dat', 'wb')
+        pickle.dump(mas, newfout)
+        newfout.close()
+    elif n == 7:
         v = input('Выйти Y/N:').upper()
         if v == 'Y':
             break
