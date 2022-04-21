@@ -7,6 +7,7 @@ class Stud:
     nom = None
     dr = None
 
+
 f = open('Friends.dat', 'rb')
 mas = mas1 = pickle.load(f)
 while True:

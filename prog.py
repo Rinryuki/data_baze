@@ -6,6 +6,8 @@ class Stud:
     dr = None
 f=open('Friends.txt','r',encoding='utf-8')
 ST=[]
+
+
 while True:
     x=f.readline()
     if not x:
